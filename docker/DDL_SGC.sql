@@ -11,3 +11,15 @@ CREATE TABLE sgc.public."CLIENTE" (
   "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   "updated_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
+INSERT INTO sgc.public."CLIENTE"(
+	 nome, email, telefone, x, y, created_at, updated_at)
+	VALUES ( 'fulano', 'f@f.com',55981923145, 1, 1, NOW(),NOW());
+
+INSERT INTO sgc.public."CLIENTE"(
+   nome, email, telefone, x, y, created_at, updated_at)
+	VALUES ( 'fulana', 'fana@f.com',55981933045, 0, 0, NOW(),NOW());
+
+INSERT INTO sgc.public."CLIENTE"(
+   nome, email, telefone, x, y, created_at, updated_at)
+	VALUES ( 'beltrano', 'belt@f.com',55981923045, 19, 0, NOW(),NOW());
