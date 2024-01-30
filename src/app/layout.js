@@ -1,3 +1,4 @@
+
 import { Inter } from "next/font/google";
 import Header from "../components/Header";
 import "./globals.css";
@@ -6,17 +7,16 @@ import Footer from "../components/footer"
 import Nav from "../components/Nav"
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "SGC",
-  description: "Sistema Gerenciador de Clientes",
-};
+export const metadata ={
+    title:"SGC"
 
+}
 
 export default function RootLayout({children}) {
 
   return (
     <html lang="en">
-    <Body>
+    <Body bod>
     <Nav></Nav> 
     <div className=" flex flex-col h-full w-full">
     <Header props={"Seja Bem-Vindo !"}></Header>

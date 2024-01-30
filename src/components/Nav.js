@@ -18,9 +18,12 @@ import { SiHomebridge } from "react-icons/si";
 
 export default function Nav() {
   return (
-    <nav className="h-full w-44 flex flex-col bg-primary-foreground p-4 gap-5 items-center border">
-        <Link href={'/'}><SiHomebridge fontSize={'5rem'} /></Link>
-        <Button className="gap-2 py-8"> <FaRegUser /> Meus Clientes</Button>
+    <nav className="h-full w-44 flex flex-col bg-primary-foreground p-4 gap-16 items-center border">
+        <Link href={'/'} className="  "><SiHomebridge fontSize={'5rem'} /></Link>
+        <div className=" flex flex-col gap-5 justify-center">
+        <Button className="gap-2 py-8" variant = "ghost"> <FaRegUser /> Meus Clientes</Button>
+
+        </div>
     </nav>
   );
 }

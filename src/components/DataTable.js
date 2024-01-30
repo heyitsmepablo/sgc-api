@@ -23,11 +23,19 @@ import {Input} from "../@/components/ui/input"
 
 import * as React from "react"
 
+import {Combobox} from "./combobox"
+
+import { useState } from "react";
 export default function DataTable({ columns, data }) {
   const [sorting, setSorting] = React.useState([])
   const [columnFilters, setColumnFilters] = React.useState(
     []
   )
+  const [dataFromChild,setData] = useState(null)  
+  const handleChildData = (data) =>{
+    setData(data)
+  }
+
   const table = useReactTable({
     data,
     columns,
@@ -44,16 +52,18 @@ export default function DataTable({ columns, data }) {
   });
   return (
     <div className="w-[60%] h-full">
-    <div className="flex items-center py-4 ">
-        <Input
-          type="text"
-          placeholder="Filter emails..."
-          value={(table.getColumn("email")?.getFilterValue()) ?? ""}
-          onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm focus "
-        />
+    <div className="flex  gap-5 items-center py-4 ">
+      <Combobox data={handleChildData}></Combobox>
+      <Input 
+        type="text"
+        placeholder={`Filtrando por ${dataFromChild}...`}
+        value={(table.getColumn(dataFromChild)?.getFilterValue()) ?? ""}
+        onChange={(event) =>
+          table.getColumn(dataFromChild)?.setFilterValue(event.target.value)
+        }
+        className="max-w-sm focus "
+      />
+
     </div>  
       <div className="rounded-md border">
         <Table>
