@@ -1,4 +1,4 @@
-
+"use server"
 import Header from "../components/Header";
 import Footer from "../components/footer";
 import DataTable from "../components/DataTable";
@@ -16,13 +16,20 @@ import {
 } from "../@/components/ui/dialog"
 import { Input } from "../@/components/ui/input"
 import { Label } from "../@/components/ui/label"
+
 export default async function Home() {
+
   let data;
+  const formData = new FormData()
+  async function submit(event){
+    event.preventDefault();
+    const name = formData.get('name')
+    console.log(name)
+  }
+
   // requisição get (já que ele esta SSR, não precisamos do user effect, já que a request é feita antes de chegar no cliente)
   try{
-    
     data = await (await fetch('http://localhost:3000/api/user')).json()
-
   } catch(e){
     console.error(e)
     data = ''
@@ -41,7 +48,7 @@ export default async function Home() {
                 Preencha os dados para cadastrar um novo cliente.
               </DialogDescription>
             </DialogHeader>
-            <div className="grid gap-4 py-4">
+            <form className="grid gap-4 py-4" method="POST" action={submit()} >
               <div className="grid grid-cols-4 items-center gap-4">
                 <Label htmlFor="name" className="text-right">
                   Nome
@@ -83,7 +90,7 @@ export default async function Home() {
                   required
                 />
               </div>
-            </div>
+            </form>
             <DialogFooter>
               <Button type="submit">Cadastrar</Button>
             </DialogFooter>
